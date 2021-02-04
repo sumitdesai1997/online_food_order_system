@@ -1,0 +1,158 @@
+<form name="staffC.staffForm" novalidate>
+	<div style=" margin: auto; width: 25%;border: 3px;padding: 20px;">
+		<h3> Staff Details</h3>
+	</div>
+	
+  <div style=" margin: auto; width: 40%;border: 3px;padding: 20px;">
+  	<button ng-click="staffC.insertStaff = true; staffC.insertChange()" type="button" class="btn btn-primary">Insert</button>
+   
+  	<button ng-click="staffC.deleteStaff = true; staffC.deleteChange()" type="button" class="btn btn-primary">Delete</button>
+   
+  	<button ng-click="staffC.selectStaff = true; staffC.selectChange()" type="button" class="btn btn-primary">Select</button>
+   
+  	<button ng-click="staffC.updateStaff = true; staffC.updateChange()" type="button" class="btn btn-primary">Update</button>
+   </div>
+	
+  <div ng-if="staffC.insertStaff">
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="FName">First Name</label>
+		    <input type="text" class="form-control" id="FName" name="FName" ng-model="staffC.FIRST_NAME" ng-maxlength="50" required>
+		    <div ng-messages="staffC.staffForm.FName.$error" style="color:red" ng-show="staffC.staffForm.FName.$invalid && (!staffC.staffForm.FName.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter First Name.</div>
+				<div ng-message="maxlength">First Name cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="LName">Last Name</label>
+		    <input type="text" class="form-control" id="Lname" name="Lname" ng-model="staffC.LAST_NAME" ng-maxlength="50" required>
+		    <div ng-messages="staffC.staffForm.Lname.$error" style="color:red" ng-show="staffC.staffForm.Lname.$invalid && (!staffC.staffForm.Lname.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Last Name.</div>
+				<div ng-message="maxlength">Last Name cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+	  </div>
+	  </br>
+	  
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="BDate">Birth Date</label>
+		    <!-- <input type="text" class="form-control" id="BDate" name="BDate" placeholder="Date (DD-MM-YYYY)" ng-paste="$event.preventDefault();"  uib-datepicker-popup="{{staffC.format}}" is-open="staffC.opened" datepicker-options="staffC.dateOptions" close-text="Close" ng-model="staffC.BIRTH_DATE" required> -->
+		   <input type="text" id="BDate" name="BDate" class="form-control" ng-model="staffC.BIRTH_DATE" placeholder="YYYY/MM/DD" required />
+		    <div ng-messages="staffC.staffForm.BDate.$error" style="color:red" ng-show="staffC.staffForm.BDate.$invalid && (!staffC.staffForm.BDate.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Birth Date.</div>
+		    </div>
+		  </div>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="ContactNo">Contact No</label>
+		    <input type="text" class="form-control" id="ContactNo" name="ContactNo" ng-model="staffC.CONTACT_NO" ng-minlength="10" ng-maxlength="10" required>
+		    <div ng-messages="staffC.staffForm.ContactNo.$error" style="color:red" ng-show="staffC.staffForm.ContactNo.$invalid && (!staffC.staffForm.ContactNo.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Contact No.</div>
+				<div ng-message="maxlength">Please enter correct 10 digit Contact No.</div>
+				<div ng-message="minlength">Please enter correct 10 digit Contact No.</div>
+		    </div>
+		  </div>
+	  </div>
+	  </br>
+	  
+	  <div style=" margin: auto; width: 10%">
+		<button ng-click="staffC.insertStaffDetails(staffC.staffForm)" type="button" class="btn btn-primary">Data Insert</button>
+	</div>
+	
+  </div>
+  
+  <div ng-if="staffC.deleteStaff">
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="staffID">Staff Id</label>
+		    <input type="text" class="form-control" id="staffID" name="staffID" ng-model="staffC.STAFF_ID" ng-maxlength="50" required>
+		   <small> Please enter staff id of which data needs to be deleted.</small>
+		    <div ng-messages="staffC.staffForm.staffID.$error" style="color:red" ng-show="staffC.staffForm.staffID.$invalid && (!staffC.staffForm.staffID.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Staff Id.</div>
+				<div ng-message="maxlength">Staff Id cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+	  </div>
+	  
+	  <div style=" margin: auto; width: 10%">
+		<button ng-click="staffC.deleteStaffDetails(staffC.staffForm)" type="button" class="btn btn-primary">Data Delete</button>
+	</div>
+  </div>
+  
+  <div ng-if="staffC.selectStaff">
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="staffID">Staff Id</label>
+		    <input type="text" class="form-control" id="staffID" name="staffID" ng-model="staffC.STAFF_ID" ng-maxlength="50" required>
+		   <small> Please enter staff id of which data needs to be selected.</small>
+		    <div ng-messages="staffC.staffForm.staffID.$error" style="color:red" ng-show="staffC.staffForm.staffID.$invalid && (!staffC.staffForm.staffID.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Staff Id.</div>
+				<div ng-message="maxlength">Staff Id cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+	  </div>
+	  
+	  <div style=" margin: auto; width: 10%">
+		<button ng-click="staffC.selectStaffDetails(staffC.staffForm)" type="button" class="btn btn-primary">Data Select</button>
+	  </div>
+   </div>
+   
+   <div ng-if="staffC.updateStaff">
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="staffID">Staff Id</label>
+		    <input type="text" class="form-control" id="staffID" name="staffID" ng-model="staffC.STAFF_ID" ng-maxlength="50" required>
+		   <small> Please enter staff id of which data needs to be updated.</small>
+		    <div ng-messages="staffC.staffForm.staffID.$error" style="color:red" ng-show="staffC.staffForm.staffID.$invalid && (!staffC.staffForm.staffID.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Staff Id.</div>
+				<div ng-message="maxlength">Staff Id cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+	  </div>
+	  
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="FName">First Name</label>
+		    <input type="text" class="form-control" id="FName" name="FName" ng-model="staffC.FIRST_NAME" ng-maxlength="50" required>
+		    <div ng-messages="staffC.staffForm.FName.$error" style="color:red" ng-show="staffC.staffForm.FName.$invalid && (!staffC.staffForm.FName.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter First Name.</div>
+				<div ng-message="maxlength">First Name cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="LName">Last Name</label>
+		    <input type="text" class="form-control" id="Lname" name="Lname" ng-model="staffC.LAST_NAME" ng-maxlength="50" required>
+		    <div ng-messages="staffC.staffForm.Lname.$error" style="color:red" ng-show="staffC.staffForm.Lname.$invalid && (!staffC.staffForm.Lname.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Last Name.</div>
+				<div ng-message="maxlength">Last Name cannot be more than 50 characters.</div>
+		    </div>
+		  </div>
+	  </div>
+	  </br>
+	  
+	  <div class="row">
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="BDate">Birth Date</label>
+		    <input type="text" id="BDate" name="BDate" class="form-control" ng-model="staffC.BIRTH_DATE" placeholder="YYYY/MM/DD" required />
+		    <div ng-messages="staffC.staffForm.BDate.$error" style="color:red" ng-show="staffC.staffForm.BDate.$invalid && (!staffC.staffForm.BDate.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Birth Date.</div>
+				<div ng-message="pattern">Please enter as per YYYY/MM/DD format.</div>
+		    </div>
+		  </div>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="ContactNo">Contact No</label>
+		    <input type="text" class="form-control" id="ContactNo" name="ContactNo" ng-model="staffC.CONTACT_NO" ng-minlength="10" ng-maxlength="10" required>
+		    <div ng-messages="staffC.staffForm.ContactNo.$error" style="color:red" ng-show="staffC.staffForm.ContactNo.$invalid && (!staffC.staffForm.ContactNo.$pristine || staffC.submit)">
+				<div ng-message="required">Please enter Contact No.</div>
+				<div ng-message="maxlength">Please enter correct 10 digit Contact No.</div>
+				<div ng-message="minlength">Please enter correct 10 digit Contact No.</div>
+		    </div>
+		  </div>
+	  </div>
+	  </br>
+	  
+	  <div style=" margin: auto; width: 10%">
+		<button ng-click="staffC.updateStaffDetails(staffC.staffForm)" type="button" class="btn btn-primary">Data Update</button>
+	</div>
+  </div>
+</form>

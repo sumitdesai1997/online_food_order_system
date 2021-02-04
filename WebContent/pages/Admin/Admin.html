@@ -1,0 +1,28 @@
+<form name="adminC.adminForm">
+  <div style=" margin: auto; width: 50%;border: 3px;padding: 20px;">
+  	<h3> Admin Login</h3>
+  </div>
+  </br>
+ <div style=" margin: auto; width: 50%;border: 3px;padding: 10px;">
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="Uname">Username</label>
+	    <input type="text" class="form-control" id="Uname" name="Uname" ng-model="adminC.USERNAME" ng-maxlength="15" required>
+	    <div ng-messages="adminC.adminForm.Uname.$error" style="color:red" ng-show="adminC.adminForm.Uname.$invalid && (!adminC.adminForm.Uname.$pristine || adminC.submit)">
+			<div ng-message="required">Please enter Username.</div>
+			<div ng-message="maxlength">Letters can not be more than 15.</div>
+	    </div>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="password">Password</label>
+	    <input type="password" class="form-control" id="password" name="password" ng-model="adminC.PASSWORD" required>
+	    <div ng-messages="adminC.adminForm.password.$error" style="color:red" ng-show="adminC.adminForm.password.$invalid && (!adminC.adminForm.password.$pristine || adminC.submit)">
+			<div ng-message="required">Please enter password.</div>
+	    </div>
+	  </div>
+	  
+	  <div style=" margin: auto; width: 10%;border: 3px;padding: 20px;">
+	  	<button ng-click="adminC.login(adminC.adminForm)" type="button" class="btn btn-primary">Login</button>
+	  </div>
+  </div>
+</form>
+

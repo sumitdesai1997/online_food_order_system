@@ -1,0 +1,1 @@
+var staffModule = angular.module("staffModule",[]);

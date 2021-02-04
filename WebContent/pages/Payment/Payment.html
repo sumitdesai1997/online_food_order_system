@@ -1,0 +1,27 @@
+<form name="paymentC.paymentForm">
+  <div style=" margin: auto; width: 50%;border: 3px;padding: 10px;">
+  	<h3> Payment Details </h3>
+  </div>
+  </br>
+ <div style=" margin: auto; width: 50%;border: 3px;padding: 10px;">
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="PMethod">Payment Method</label>
+	    <select class="form-control" name="PMethod" ng-options="option.DISPLAY for option in paymentC.PayMethodList track by option.VALUE" ng-model="paymentC.PAYMENT_METHOD" required></select>
+	    <div ng-messages="paymentC.paymentForm.PMethod.$error" class="error-messages" ng-show="paymentC.paymentForm.PMethod.$invalid && (!paymentC.paymentForm.PMethod.$pristine || paymentC.submit)">
+			<div ng-message="required">Please select Payment Method.</div>
+	    </div>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="PAmount">Payment Amount</label>
+	    <input type="number" class="form-control" id="PAmount" name="PAmount" ng-model="paymentC.PAYMENT_AMOUNT" disabled required>
+	    <div ng-messages="paymentC.paymentForm.PAmount.$error" class="error-messages" ng-show="paymentC.paymentForm.PAmount.$invalid && (!paymentC.paymentForm.PAmount.$pristine || paymentC.submit)">
+			<div ng-message="required">Please enter Payment Amount.</div>
+	    </div>
+	  </div>
+	  
+	  <div style=" margin: auto; width: 10%;border: 3px;padding: 20px;">
+	  	<button ng-click="paymentC.savePaymentDetails(paymentC.paymentForm)" type="button" class="btn btn-primary">Next</button>
+	  </div>
+  </div>
+</form>
+

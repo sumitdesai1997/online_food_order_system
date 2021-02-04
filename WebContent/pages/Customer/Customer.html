@@ -1,0 +1,81 @@
+<form name="custC.custForm" novalidate>
+	<div style=" margin: auto; width: 25%;border: 3px;padding: 20px;">
+		<h3> Customer Details</h3>
+	</div>
+	
+  <div class="row">
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="FName">First Name</label>
+	    <input type="text" class="form-control" id="FName" name="FName" ng-model="custC.FIRST_NAME" ng-maxlength="50" required>
+	    <div ng-messages="custC.custForm.FName.$error" style="color:red" ng-show="custC.custForm.FName.$invalid && (!custC.custForm.FName.$pristine || custC.submit)">
+			<div ng-message="required">Please enter First Name.</div>
+			<div ng-message="maxlength">First Name cannot be more than 50 characters.</div>
+	    </div>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="LName">Last Name</label>
+	    <input type="text" class="form-control" id="Lname" name="Lname" ng-model="custC.LAST_NAME" ng-maxlength="50" required>
+	    <div ng-messages="custC.custForm.Lname.$error" style="color:red" ng-show="custC.custForm.Lname.$invalid && (!custC.custForm.Lname.$pristine || custC.submit)">
+			<div ng-message="required">Please enter Last Name.</div>
+			<div ng-message="maxlength">Last Name cannot be more than 50 characters.</div>
+	    </div>
+	  </div>
+  </div>
+  </br>
+  <div class="row">
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="ContactNo">Contact No</label>
+	    <input type="number" class="form-control" id="ContactNo" name="ContactNo" ng-model="custC.CONTACT_NO" ng-minlength="10" ng-maxlength="10" required>
+	    <div ng-messages="custC.custForm.ContactNo.$error" style="color:red" ng-show="custC.custForm.ContactNo.$invalid && (!custC.custForm.ContactNo.$pristine || custC.submit)">
+			<div ng-message="required">Please enter Contact No.</div>
+			<div ng-message="maxlength">Please enter correct 10 digit Contact No.</div>
+			<div ng-message="minlength">Please enter correct 10 digit Contact No.</div>
+	    </div>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="AltContactNo">Alternate Contact No</label>
+	    <input type="number" class="form-control" id="AltContactNo" name="AltContactNo" ng-model="custC.ALT_CONTACT_NO" ng-minlength="10" ng-maxlength="10">
+	    <div ng-messages="custC.custForm.AltContactNo.$error" style="color:red" ng-show="custC.custForm.AltContactNo.$invalid && (!custC.custForm.AltContactNo.$pristine || custC.submit)">
+			<div ng-message="maxlength">Please enter correct 10 digit Contact No.</div>
+			<div ng-message="minlength">Please enter correct 10 digit Contact No.</div>
+	    </div>
+	  </div>
+  </div>
+  </br>
+  <div class="row">
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="HouseNo">House No</label>
+	    <input type="text" class="form-control" id="HouseNo" name="HouseNo" ng-model="custC.HOUSE_NO" ng-maxlength="10" required>
+	    <div ng-messages="custC.custForm.HouseNo.$error" style="color:red" ng-show="custC.custForm.HouseNo.$invalid && (!custC.custForm.HouseNo.$pristine || custC.submit)">
+			<div ng-message="required">Please enter House No.</div>
+			<div ng-message="maxlength">Please enter maximum 10 letters.</div>
+	    </div>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="StrName">Street Name</label>
+	    <input type="text" class="form-control" id="StrName" name="StrName" ng-model="custC.STREET_NAME" ng-maxlength="50" required>
+	    <div ng-messages="custC.custForm.StrName.$error" style="color:red" ng-show="custC.custForm.StrName.$invalid && (!custC.custForm.StrName.$pristine || custC.submit)">
+			<div ng-message="required">Please enter Street Name.</div>
+			<div ng-message="maxlength">Street Name cannot be more than 50 characters.</div>
+	    </div>
+	  </div>
+  </div>
+  </br>
+  <div class="row">
+	  <div class="col-lg-6 col-md-6 col-sm-12">
+	    <label for="pincode">Pincode</label>
+	    <input type="number" class="form-control" id="pincode" name="pincode" ng-model="custC.PINCODE" ng-minlength="6" ng-maxlength="6" required>
+	    <div ng-messages="custC.custForm.pincode.$error" style="color:red" ng-show="custC.custForm.pincode.$invalid && (!custC.custForm.pincode.$pristine || custC.submit)">
+			<div ng-message="required">Please enter Pincode.</div>
+			<div ng-message="maxlength">Please enter correct 6 digit Contact No.</div>
+			<div ng-message="minlength">Please enter correct 6 digit Contact No.</div>
+	    </div>
+	  </div>
+  </div>
+  </br>
+  	
+  <div style=" margin: auto; width: 10%;border: 3px;padding: 20px;">
+  	<button ng-click="custC.saveCustomerDetails(custC.custForm)" type="button" class="btn btn-primary">Next</button>
+  </div>
+  
+</form>

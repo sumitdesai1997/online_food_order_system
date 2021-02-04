@@ -1,0 +1,90 @@
+<form name="orderC.orderForm">
+	<div style=" margin: auto; width: 50%;border: 3px;padding: 10px;">
+		<h3> Order Details</h3>
+	</div>
+	
+	Do you want to order Veg Items?
+	<div>
+        <input ng-model="orderC.VEG_QUEST" type="radio" value="Y" id="radio1" name="vegQues" required > <label></span> Yes</label>
+    </div>
+    <div class="radio_wrap">
+        <input ng-model="orderC.VEG_QUEST" type="radio" value="N" id="radio2" name="vegQues" required > <label></span> No</label>
+    </div>
+	<div ng-messages="orderC.orderForm.vegQues.$error" style="color:red" ng-show="orderC.orderForm.vegQues.$invalid && (!orderC.orderForm.vegQues.$pristine || orderC.submit)">
+        <div ng-message="required">Please select an option.</div>
+    </div>
+  
+  <div style=" margin: auto; width: 50%;border: 3px;padding: 10px;">
+	  <div ng-if="orderC.VEG_QUEST == 'Y'">
+		  <h3>Veg Item Details</h3>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="VIQuantity">Item Quantity</label>
+		    <select class="form-control" id="VIQuantity" name="VIQuantity" ng-options="option.DISPLAY for option in orderC.ItemQuanityList track by option.VALUE" ng-model="orderC.VEG_ITEM_QUANTITY" ng-change="orderC.vegItemChange(orderC.VEG_ITEM_NAME, orderC.VEG_ITEM_QUANTITY)" required></select>
+		    <div ng-messages="orderC.orderForm.VIQuantity.$error" style="color:red" ng-show="orderC.orderForm.VIQuantity.$invalid && (!orderC.orderForm.VIQuantity.$pristine || orderC.submit)">
+				<div ng-message="required">Please select Item Quantity.</div>
+		    </div>
+		  </div>
+		  </br>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+	  		<label for="VIName">Item Name</label>
+		  	<select class="form-control" id="VIName" name="VIName" ng-options="option.DISPLAY for option in orderC.VegItemList track by option.VALUE" ng-model="orderC.VEG_ITEM_NAME" ng-change="orderC.vegItemChange(orderC.VEG_ITEM_NAME, orderC.VEG_ITEM_QUANTITY)" required></select>
+		  	<div ng-messages="orderC.orderForm.VIName.$error" style="color:red" ng-show="orderC.orderForm.VIName.$invalid && (!orderC.orderForm.VIName.$pristine || orderC.submit)">
+		  		<div ng-message="required">Please select Item Name.</div>
+		  	</div>
+		  </div>
+		  </br>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="VIPrice">Item Price</label>
+		    <input type="text" class="form-control" id="VIPrice" name="VIPrice" ng-model="orderC.VEG_ITEM_PRICE" disabled required>
+		    <div ng-messages="orderC.orderForm.VIPrice.$error" style="color:red" ng-show="orderC.orderForm.VIPrice.$invalid && (!orderC.orderForm.VIPrice.$pristine || orderC.submit)">
+				<div ng-message="required">Please enter Item Price.</div>
+		    </div>
+		  </div>
+		  </br>
+	  </div>
+  </div>
+  
+  Do you want to order Non Veg Items?
+	
+	<div>
+        <input ng-model="orderC.NON_VEG_QUEST" type="radio" value="Y" id="radio1" name="nonvegQues" required > <label></span> Yes</label>
+    </div>
+    <div class="radio_wrap">
+        <input ng-model="orderC.NON_VEG_QUEST" type="radio" value="N" id="radio2" name="nonvegQues" required > <label></span> No</label>
+    </div>
+    <div ng-messages="orderC.orderForm.nonvegQues.$error" style="color:red" ng-show="orderC.orderForm.nonvegQues.$invalid && (!orderC.orderForm.nonvegQues.$pristine || orderC.submit)">
+        <div ng-message="required">Please select an option.</div>
+    </div>
+    
+  <div style=" margin: auto; width: 50%;border: 3px;padding: 10px;">
+	  <div ng-if="orderC.NON_VEG_QUEST=='Y'">
+		  <h3>Non Veg Item Details</h3>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="NIQuantity">Item Quantity</label>
+		    <select class="form-control" id="NIQuantity" name="NIQuantity" ng-options="option.DISPLAY for option in orderC.ItemQuanityList track by option.VALUE" ng-model="orderC.NON_VEG_ITEM_QUANTITY" ng-change="orderC.nonvegItemChange(orderC.NON_VEG_ITEM_NAME, orderC.NON_VEG_ITEM_QUANTITY)" required></select>
+		    <div ng-messages="orderC.orderForm.NIQuantity.$error" style="color:red" ng-show="orderC.orderForm.NIQuantity.$invalid && (!orderC.orderForm.NIQuantity.$pristine || orderC.submit)">
+				<div ng-message="required">Please select Item Quantity.</div>
+		    </div>
+		  </div>
+		  </br>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		  	<label for="NIName">Item Name</label>
+		    <select class="form-control" id="NIName" name="NIName" ng-options="option.DISPLAY for option in orderC.NonVegItemList track by option.VALUE" ng-model="orderC.NON_VEG_ITEM_NAME" ng-change="orderC.nonvegItemChange(orderC.NON_VEG_ITEM_NAME, orderC.NON_VEG_ITEM_QUANTITY)" required></select>
+		    <div ng-messages="orderC.orderForm.NIName.$error" style="color:red" ng-show="orderC.orderForm.NIName.$invalid && (!orderC.orderForm.NIName.$pristine || orderC.submit)">
+				<div ng-message="required">Please select Item Name.</div>
+		    </div>
+		  </div>
+		  </br>
+		  <div class="col-lg-6 col-md-6 col-sm-12">
+		    <label for="NIPrice">Item Price</label>
+		    <input type="text" class="form-control" id="NIPrice" name="NIPrice" ng-model="orderC.NON_VEG_ITEM_PRICE" disabled required>
+		    <div ng-messages="orderC.orderForm.NIPrice.$error" style="color:red" ng-show="orderC.orderForm.NIPrice.$invalid && (!orderC.orderForm.NIPrice.$pristine || orderC.submit)">
+				<div ng-message="required">Please enter Item Price.</div>
+		    </div>
+		  </div>
+		  </br>
+	  </div>
+  </div>
+  <div style=" margin: auto; width: 10%;border: 3px;padding: 20px;">
+  	<button ng-click="orderC.saveOrderDetails(orderC.orderForm)" type="button" class="btn btn-primary">Next</button>
+</form>
